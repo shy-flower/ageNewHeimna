@@ -1,0 +1,58 @@
+{
+  "id": "2284277",
+  "name": "ageNewHeiMa",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "113519",
+      "name": "锁",
+      "font_class": "lock",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "925645",
+      "name": "头像",
+      "font_class": "icontouxiang",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "1470832",
+      "name": "订单",
+      "font_class": "dingdan",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "7145697",
+      "name": "权限",
+      "font_class": "quanxian",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "7155220",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "17397433",
+      "name": "商品",
+      "font_class": "shangpin",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "18892314",
+      "name": "用户列表",
+      "font_class": "pingtaiiconhuizong_huaban1fuben4",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}
