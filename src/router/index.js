@@ -2,6 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/components/home.vue'
 import Welcome from '@/components/welcome.vue'
+import Message from '@/components/message.vue'
+import Users from '@/components/users.vue'
+import Rights from '@/components/rights.vue'
+import Roles from '@/components/roles.vue'
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -10,12 +15,22 @@ const routes = [{
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    
   },
-  {
-    path: "/welcome",
-    component: Welcome
+  { path: '/welcome',
+   component:Welcome,
+   redirect:'/message',
+   children:[
+    { path:'/message',component:Message},
+    { path:'/users',component:Users},
+    { path:'/rights',component:Rights},
+    { path:'/roles',component:Roles},
+   ]
+
+   
   }
+ 
 ]
 
 const router = new VueRouter({
