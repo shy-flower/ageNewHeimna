@@ -8,7 +8,7 @@
       <el-breadcrumb-item>活动详情</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 内容主体 -->
-    <el-card style="margin-top: 15px;">
+    <el-card >
       <div class="inputBox">
         <el-input
           placeholder="请输入搜索内容"

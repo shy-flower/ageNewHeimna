@@ -20,6 +20,19 @@ axios.interceptors.request.use(config => {
  
   return config
 })
+
+/* 全局时间过滤器 */
+Vue.filter('time',function(value){
+   const date =new Date(value)
+   const yy = date.getFullYear() //获取年
+   const mm =(date.getMonth()+1+"").padStart(2,"0")//获取月 从0开始
+   const dd =(date.getDate()+"").padStart(2,"0")//获取日
+   const hh =(date.getHours()+"").padStart(2,"0")//获取小时
+   const mimi =(date.getMinutes()+"").padStart(2,"0")//获取分钟
+   return `${yy}-${mm}-${dd}  ${hh}:${mimi}`
+   
+})
+
 /* 全局挂载axios */
 Vue.prototype.$http=axios
 
