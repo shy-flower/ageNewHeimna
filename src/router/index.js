@@ -6,8 +6,8 @@ import Message from '@/components/message.vue'
 import Users from '@/components/users.vue'
 import Rights from '@/components/rights.vue'
 import Roles from '@/components/roles.vue'
-import Goods from '@/components/goods.vue'
-
+import Goods from '@/components/goods/goods.vue'
+import AddGoods from '@/components/goods/addGoods.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -28,9 +28,8 @@ const routes = [{
     { path:'/rights',component:Rights},
     { path:'/roles',component:Roles},
     { path:'/goods',component:Goods},
+    { path:'/addGoods',component:AddGoods},
    ]
-
-   
   }
  
 ]

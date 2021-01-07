@@ -23,7 +23,7 @@
           ></el-button>
         </el-input>
         <el-button @click="addGoods()" class="addButton" type="primary"
-          >添加用户</el-button
+          >添加商品</el-button
         >
       </div>
       <!-- tabel表格区域 -->
@@ -52,10 +52,21 @@
               type="danger"
               icon="el-icon-delete"
               size="mini"
+              @click="deleteGoods(scope.row)"
             ></el-button>
           </template>
         </el-table-column>
       </el-table>
+      <!-- 分页区域 -->
+      <el-pagination
+        @size-change="goodsSizeChange"
+        @current-change="goodsCurrentChange"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="100"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+      >
+      </el-pagination>
     </el-card>
   </div>
 </template>
@@ -98,14 +109,45 @@ export default {
       /* 保存数据总条数 */
       this.total = res.data.total;
     },
-
     /* 点击搜索商品 */
     findGoods() {
       this.getGoodsList();
     },
     /*点击添加商品 */
     addGoods() {
-      console.log("添加商品");
+      this.$router.push("/addGoods");
+    },
+    /* 删除商品信息 */
+    async deleteGoods(row) {
+      console.log(row);
+      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(async () => {
+          const { data: res } = await this.$http.delete(
+            `goods/${row.goods_id}`
+          );
+          if (res.meta.status !== 200) {
+            return this.$message.error("删除商品失败");
+          }
+          this.$message.success("删除商品成功");
+          this.getGoodsList();
+        })
+        .catch(() => {
+          this.$message.info("已取消");
+        });
+    },
+    /* 每页/条发生改变 */
+    goodsSizeChange(newSize) {
+      this.goodsInfo.pagesize = newSize;
+      this.getGoodsList();
+    },
+    /* 当前页发生改变 */
+    goodsCurrentChange(newCurrent) {
+      this.goodsInfo.pagenum = newCurrent;
+      this.getGoodsList();
     },
   },
 };
@@ -117,7 +159,6 @@ export default {
   width: 500px;
   margin-bottom: 18px;
   .addButton {
-      
     margin-left: 25px;
   }
 }

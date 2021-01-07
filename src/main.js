@@ -10,6 +10,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/rest.css'
 /* 引入字体图标 */
 import '@/assets/icon/iconfont.css'
+// 文本编辑器需要引入的文件
+import  QuillEditor  from 'vue-quill-editor'
+//文本编辑器引入的样式
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
+
+
 
 /* 配置基准地址 */
 axios.defaults.baseURL="http://119.45.224.208:8888/api/private/v1/"
@@ -37,6 +46,8 @@ Vue.filter('time',function(value){
 Vue.prototype.$http=axios
 
 Vue.use(elementUI)
+Vue.use(QuillEditor)
+
 import{
   
 }from 'element-ui'
