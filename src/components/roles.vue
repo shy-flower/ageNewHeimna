@@ -132,7 +132,12 @@
       </span>
     </el-dialog>
     <!-- 分配权限对话框 -->
-    <el-dialog title="分配权限" :visible.sync="AssignRolesDialog" width="30%">
+    <el-dialog
+      title="分配权限"
+      :visible.sync="AssignRolesDialog"
+      @close="setRolesDialogClosed()"
+      width="30%"
+    >
       <el-tree
         default-expand-all
         :data="TreeRoleList"
@@ -140,6 +145,7 @@
         :default-checked-keys="SelectRoles"
         node-key="id"
         :props="RolesDefaultProps"
+        ref="treeRef"
       >
       </el-tree>
 
@@ -191,6 +197,7 @@ export default {
       TreeRoleList: [],
       /* 在tree控件上显示已有的三级权限 */
       SelectRoles: [],
+      roleID: "",
     };
   },
   computed: {},
@@ -307,11 +314,12 @@ export default {
     },
     /* 点击分配权限按钮 */
     async clickAssignRoles(row) {
+      this.roleID = row.id;
+
       /* 发起请求拿到所有角色权限 */
       const { data: res } = await this.$http.get(`rights/tree`);
       this.TreeRoleList = res.data;
       this.handelRoles(row, this.SelectRoles);
-      console.log(this.SelectRoles);
 
       this.AssignRolesDialog = true;
     },
@@ -325,8 +333,28 @@ export default {
     },
 
     /* 确定分配权限 */
-    subAssignRoles() {
+    async subAssignRoles() {
+      const keys = [
+        ...this.$refs.treeRef.getCheckedKeys(),
+        ...this.$refs.treeRef.getHalfCheckedNodes(),
+      ];
+      const idStr = keys.join(",");
+      const { data: res } = await this.$http.post(
+        `roles/${this.roleID}/rights`,
+        { rids: idStr }
+      );
+
+      console.log(res);
+      if (res.meta.status !== 200) {
+        return this.$message.error("分配权限失败!");
+      }
+      this.$message.success("分配权限成功!");
+      this.getRolesList();
       this.AssignRolesDialog = false;
+    },
+    /* 监听分配全选对话框的关闭事件 */
+    setRolesDialogClosed() {
+      this.SelectRoles = [];
     },
   },
 };

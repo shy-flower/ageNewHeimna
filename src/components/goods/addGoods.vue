@@ -142,7 +142,10 @@ export default {
   components: {},
   props: {},
   data() {
-    
+<<<<<<< HEAD
+
+=======
+>>>>>>> commodity
     return {
       /* 添加商品信息 */
       addGoodsRuleForm: {
