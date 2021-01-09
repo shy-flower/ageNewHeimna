@@ -16,3 +16,6 @@ body,
  .ql-editor {
     height: 300px !important;
   } 
+  .el-card{
+      margin-top: 15px;
+  }
