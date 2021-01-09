@@ -8,7 +8,7 @@
       <el-breadcrumb-item>活动详情</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 内容主体 -->
-    <el-card >
+    <el-card>
       <div class="inputBox">
         <el-input
           placeholder="请输入搜索内容"
@@ -312,12 +312,12 @@ export default {
         cancelButtonText: "取消",
         type: "warning",
       })
-        .catch(() => {
-          this.$message.info("已取消");
-        })
         .then(async () => {
           await this.$http.delete(`users/${row.id}`);
           this.getUsersList();
+        })
+        .catch(() => {
+          this.$message.info("已取消");
         });
     },
     /* 点击显示修改用户信息对话框 */

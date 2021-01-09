@@ -16,6 +16,9 @@ import  QuillEditor  from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+//树形结构
+import treeTable  from 'vue-table-with-tree-grid'
+Vue.component("tree-Table", treeTable)
 
 
 

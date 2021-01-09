@@ -8,6 +8,8 @@ import Rights from '@/components/rights.vue'
 import Roles from '@/components/roles.vue'
 import Goods from '@/components/goods/goods.vue'
 import AddGoods from '@/components/goods/addGoods.vue'
+import params from '@/components/params.vue'
+import categories from '@/components/categories.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -29,13 +31,15 @@ const routes = [{
     { path:'/roles',component:Roles},
     { path:'/goods',component:Goods},
     { path:'/addGoods',component:AddGoods},
+    { path:'/params',component:params},
+    { path:'/categories',component:categories},
    ]
   }
  
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
 })
 
 /* 挂载路由导航守卫 */
