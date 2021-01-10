@@ -199,4 +199,7 @@ export default {
 .el-cascader {
   width: 100%;
 }
+.el-input {
+  width: 30%;
+}
 </style>

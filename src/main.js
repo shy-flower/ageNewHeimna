@@ -19,7 +19,7 @@ import 'quill/dist/quill.bubble.css'
 //树形结构
 import treeTable  from 'vue-table-with-tree-grid'
 Vue.component("tree-Table", treeTable)
-
+//chear 表格图形
 
 
 
